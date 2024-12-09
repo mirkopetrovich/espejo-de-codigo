@@ -8,7 +8,7 @@ int main( ){
     ofGLFWWindowSettings settings;
     settings.setSize(1080, 1920);
     //settings.setPosition(glm::vec2(3840,0));
-    settings.windowMode = OF_WINDOW; //can also be OF_FULLSCREEN
+    settings.windowMode = OF_FULLSCREEN; //can also be OF_FULLSCREEN
     //settings.multiMonitorFullScreen = true;
     //settings.decorated = false;
     auto window = ofCreateWindow(settings);

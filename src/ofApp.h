@@ -45,7 +45,7 @@ class ofApp : public ofBaseApp{
     
     ofxPanel gui;
     ofParameter<int> paso_x, paso_y, ancho, alto, ancho_, alto_, size, gap, gapp ;
-    ofParameter<float> zoom,curva;
+    ofParameter<float> zoom,curva,curva2;
     ofParameter<int> ss1, ss2, ss3, ss4, ss5, ss6, ss7, ss8;
     
     ofImage mapa;

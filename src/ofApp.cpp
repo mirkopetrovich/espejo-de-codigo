@@ -2,11 +2,14 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+    ofSetFrameRate(18);
    //mapa.load("Halftone screens/40x30x17.charliestrip.png");
-   mapa.load("Halftone screens/40x40x11.halftonestrip.png");
+   //mapa.load("40x40x11.halftonestrip.png");
    // mapa.load("Halftone screens/40x40x32.mezzo1.png");
     //mapa.load("Halftone screens/40x40x32.glassgrad.png");
-   // mapa.load("st3.png");
+   // mapa.load("st3.png")
+    mapa.load("Banda_Tetris.png");
     
    
     
@@ -26,16 +29,16 @@ void ofApp::setup(){
     set_4 =  string(" x.");
     set_5 =  string("12345678901234567890123456789012");
     set_6 =  string("12345678901234567");
-    set_7 =  string("😎");
+    set_7 =  string("1234");
     
      
-    asciiCharacters = set_5;
+    asciiCharacters = set_6;
     
     ofEnableAlphaBlending();
     
     gui.setup();
-    gui.add(paso_x.set("H", 39, 10, 300));
-    gui.add(paso_y.set("V", 28, 10, 300));
+    gui.add(paso_x.set("H", 40, 10, 300));
+    gui.add(paso_y.set("V", 40, 10, 300));
     gui.add(ancho.set("ancho", camWidth, 10, camWidth));
     gui.add(alto.set("alto", camHeight, 10, camHeight));
     gui.add(ancho_.set("ancho_",0, -1080, 1080));
@@ -45,6 +48,7 @@ void ofApp::setup(){
     gui.add(gapp.set("gapp", 0, 0, 500));
     gui.add(zoom.set("zoom", 2., 0., 2.));
     gui.add(curva.set("curva", 2.5, 0., 20.));
+    gui.add(curva2.set("curva2", 2.5, 0., 20.));
     gui.add(ss1.set("ss1", 0, 0,  1920));
     gui.add(ss2.set("ss2", 1, 1,  17));
     gui.add(ss3.set("ss3", 0, 0,  1920));
@@ -128,16 +132,17 @@ void ofApp::draw(){
             else ofSetColor(color);
             //font.drawString(ofToString(asciiCharacters[character]), (1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto);
             //font.drawString(ofToString(character), (1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto);
-            
+            float porte = powf( ofMap(lightness, 0, 255, 0.01, 1.5), curva2);
             
            //mapa.drawSubsection((1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto_,ss3,ss4, ss6, character*ss5);
            // mapa.drawSubsection( (1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto_,zoom*ss3,zoom*ss3,character*ss5,ss6,ss7*2.,ss7*2.);
-            mapa.drawSubsection((1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto_,paso_x*zoom,paso_y*zoom,character*40,0,40,40);
+             mapa.drawSubsection((1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto_,paso_x*zoom*porte,paso_y*zoom*porte,character*40,0,40,40);
+            //mapa.drawSubsection((1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto_,zoom*40,zoom+40,character*40,0,40,40);
             
             
            // font.drawString( ofUTF8Substring(asciiCharacters, character, 1), (1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto);
-            //font.drawString(ofToString(asciiCharacters[character]), (1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto);
-            ;
+           // font.drawString(ofToString(asciiCharacters[character]), (1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto);
+            
             //ofDrawRectangle((1080-(j*zoom))+ancho_,(1920-(i*zoom))+alto_, gapp, gapp);
         }
     }
